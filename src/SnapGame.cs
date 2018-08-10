@@ -11,6 +11,9 @@ namespace CardGames
             Bitmap cards;
             cards = SwinGame.LoadBitmapNamed ("Cards", "Cards.png");
             SwinGame.BitmapSetCellDetails (cards, 82, 110, 13, 5, 53);      // set the cells in the bitmap to match the cards
+
+            //Changing UI font
+            SwinGame.LoadFontNamed("GameFont", "chunkfive.otf", 14);
         }
 
 		/// <summary>
@@ -40,9 +43,9 @@ namespace CardGames
 			Card top = myGame.TopCard;
 			if (top != null)
 			{
-				SwinGame.DrawText ("Top Card is " + top.ToString (), Color.RoyalBlue, 0, 20);
-				SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.RoyalBlue, 0, 30);
-				SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.RoyalBlue, 0, 40);
+				SwinGame.DrawText ("Top Card is " + top.ToString (), Color.RoyalBlue, "GameFont", 0, 20);
+				SwinGame.DrawText ("Player 1 score: " + myGame.Score(0), Color.RoyalBlue, "GameFont", 0, 30);
+				SwinGame.DrawText ("Player 2 score: " + myGame.Score(1), Color.RoyalBlue, "GameFont", 0, 40);
 				SwinGame.DrawCell (SwinGame.BitmapNamed ("Cards"), top.CardIndex, 350, 50);
 			}
 			else
@@ -73,7 +76,7 @@ namespace CardGames
 
 			//Load the card images and set their cell details
             LoadResources();
-            
+
 			// Create the game!
 			Snap myGame = new Snap ();
 
